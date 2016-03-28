@@ -25,3 +25,8 @@ function admin_login_check_info($data) {
         die('Query Problem' . mysql_error());
     }
 }
+
+function admin_logout(){
+    session_destroy();
+    header('Location:index.php');
+}

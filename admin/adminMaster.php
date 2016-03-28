@@ -1,7 +1,12 @@
 <?php
-session_start();
+    session_start();
+    if (isset($_GET['status'])){
+        require 'function_defination.php';
+        admin_logout();
+    }
 ?>
 
+<?php if (isset($_SESSION['admin_id'])){ ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -317,7 +322,7 @@ session_start();
                                         <span>Account Settings</span>
                                     </li>
                                     <li><a href="#"><i class="halflings-icon user"></i> Profile</a></li>
-                                    <li><a href="login.php.html"><i class="halflings-icon off"></i> Logout</a></li>
+                                    <li><a href="?status=logout"><i class="halflings-icon off"></i> Logout</a></li>
                                 </ul>
                             </li>
                             <!-- end: User Dropdown -->
@@ -475,3 +480,8 @@ session_start();
 
     </body>
 </html>
+
+<?php }  else {
+     header('Location:index.php');
+} ?>
+

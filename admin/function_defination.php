@@ -1,5 +1,4 @@
 <?php
-session_start();
 
 function admin_login_check_info($data) {
     require '../db_connect.php';
@@ -13,7 +12,8 @@ function admin_login_check_info($data) {
         $admin_info = mysqli_fetch_assoc($query_result);
 //        echo '<pre>';
 //        print_r($admin_info);
-        if ($admin_info){            
+        if ($admin_info){   
+            session_start();
             $_SESSION['admin_id']   =   $admin_info['admin_id'];
             $_SESSION['admin_name'] =   $admin_info['admin_name'];
             header('Location:adminMaster.php');

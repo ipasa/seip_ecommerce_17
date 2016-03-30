@@ -1,4 +1,11 @@
 <?php
+session_start();
+if (isset($_SESSION['admin_id'])){
+    $admin_id   =   $_SESSION['admin_id'];
+    if ($admin_id!=NULL){
+        header('Location:adminMaster.php');
+    }
+}
 if (isset($_POST['submit'])){
     require 'function_defination.php';    
     $message    =   admin_login_check_info($_POST);

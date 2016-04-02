@@ -30,3 +30,17 @@ function admin_logout(){
     session_destroy();
     header('Location:index.php');
 }
+
+function add_category_product($data){
+    require '../db_connect.php';
+    
+    $sql = "INSERT INTO category (category_name, category_desc, publicationStatus)
+            VALUES ('$data[category_name]', '$data[category_desc]', '$data[publicationStatus]')";
+
+if (mysqli_query($conn, $sql)) {
+    $message    =   'Insert Succesfully Done';
+} else {
+    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+}
+
+}

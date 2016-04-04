@@ -4,10 +4,6 @@ if (isset($_GET['status'])) {
     require 'function_defination.php';
     admin_logout();
 }
-
-if (isset($message)) {
-    echo $message;
-}
 ?>
 
 <?php if (isset($_SESSION['admin_id'])) { ?>
@@ -346,8 +342,27 @@ if (isset($message)) {
                     <div id="sidebar-left" class="span2">
                         <div class="nav-collapse sidebar-nav">
                             <ul class="nav nav-tabs nav-stacked main-menu">
-                                <li><a href="adminMaster.php"><i class="icon-bar-chart"></i><span class="hidden-tablet"> Dashboard</span></a></li>	
-                                <li><a href="add_category.php"><i class="icon-envelope"></i><span class="hidden-tablet"> Add Category</span></a></li>
+                                <li>
+                                    <a href="adminMaster.php">
+                                        <i class="icon-bar-chart"></i>
+                                        <span class="hidden-tablet"> Dashboard</span>
+                                    </a>
+                                </li>	
+                                
+                                <li>
+                                    <a href="add_category.php">
+                                        <i class="icon-pencil"></i>
+                                        <span class="hidden-tablet"> Add Category</span>
+                                    </a>
+                                </li>
+                                
+                                <li>
+                                    <a href="display_category.php">
+                                        <i class="icon-save"></i>
+                                        <span class="hidden-tablet"> Manage Category</span>
+                                    </a>
+                                </li>
+                                
                                 <li><a href="tasks.html"><i class="icon-tasks"></i><span class="hidden-tablet"> Tasks</span></a></li>
                                 <li><a href="ui.html"><i class="icon-eye-open"></i><span class="hidden-tablet"> UI Features</span></a></li>
                                 <li><a href="widgets.html"><i class="icon-dashboard"></i><span class="hidden-tablet"> Widgets</span></a></li>
@@ -389,8 +404,10 @@ if (isset($message)) {
                         if (isset($pages)) {
                             if ($pages == 'massegePage') {
                                 include 'pages/massegeContent.php';
-                            }elseif ($pages == 'add_category') {
+                            } elseif ($pages == 'add_category') {
                                 include 'pages/addCategoryPage.php';
+                            } elseif ($pages == 'display_category') {
+                                include 'pages/displayCategoryContent.php';
                             }
                         } else {
                             include 'pages/maincontent.php';

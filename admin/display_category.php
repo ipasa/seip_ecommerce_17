@@ -1,3 +1,3 @@
 <?php 
-$pages  =   'add_category';
+$pages  =   'display_category';
 include 'adminMaster.php';

@@ -39,6 +39,11 @@ if (isset($_POST['addBtnCategory'])) {
         </div>
 
         <div class="box-content"> 
+            <?php
+            if (isset($message)) {
+                echo $message;
+            }
+            ?>
             <form class="form-horizontal" action="" method="post">
                 <fieldset>
                     <div class="control-group">

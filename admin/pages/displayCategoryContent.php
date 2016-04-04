@@ -1,12 +1,24 @@
 <?php
     require 'function_defination.php';
+    
+    if (isset($_GET['p_status'])){
+        $category_id    =   $_GET['category_id'];
+        
+        if ($_GET['p_status']=='published'){
+            $message =   unpublished_a_category($category_id);
+        }
+        if ($_GET['p_status']=='unpublished'){
+            $message =   published_a_category($category_id);
+        }
+    }
+    
     $categories  =   show_category();    
 ?>
 
 <ul class="breadcrumb">
     <li>
         <i class="icon-home"></i>
-        <a href="index.html">Home</a> 
+        <a href="index.php">Home</a> 
         <i class="icon-angle-right"></i>
     </li>
     <li><a href="#">Category</a></li>
@@ -23,6 +35,14 @@
             </div>
         </div>
         <div class="box-content">
+            <h3 style="color: green;text-align: center">
+                <?php
+                if (isset($message)){
+                    echo $message;
+                    unset($message);
+                }
+                ?>
+            </h3>
             <table class="table table-striped table-bordered bootstrap-datatable datatable">
                 <thead>
                     <tr>
@@ -52,14 +72,25 @@
                         <?php }?>
                         
                         <td class="center">
-                            <a class="btn btn-success" href="#">
-                                <i class="halflings-icon white zoom-in"></i>  
-                            </a>
-                            <a class="btn btn-info" href="#">
+                            <?php if ($row["publicationStatus"] == 0){ ?>
+                                <a class="btn btn-success" 
+                                   href="?p_status=published&category_id=<?php echo $row["category_id"]; ?>" 
+                                   title="Publish">
+                                    <i class="halflings-icon white thumbs-up"></i>  
+                                </a>
+                            <?php }  else { ?>
+                                <a class="btn btn-warning" 
+                                   href="?p_status=unpublished&category_id=<?php echo $row["category_id"]; ?>"
+                                   title="Unpublish">
+                                    <i class="halflings-icon white thumbs-down"></i>  
+                                </a>
+                            <?php } ?>
+                            <a class="btn btn-info" href="#" title="Edit">
                                 <i class="halflings-icon white edit"></i>  
                             </a>
                             <a class="btn btn-danger" 
-                               href="delete_category.php?id=<?php echo $row["category_id"]; ?>">
+                               href="delete_category.php?id=<?php echo $row["category_id"]; ?>" 
+                               title="Delete">
                                 <i class="halflings-icon white trash"></i> 
                             </a>
                         </td>

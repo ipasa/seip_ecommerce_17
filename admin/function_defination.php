@@ -65,3 +65,26 @@ function delete_category($category_id){
         echo "Error deleting record: " . mysqli_error($conn);
     }
 }
+
+function published_a_category($category_id){
+    require '../db_connect.php';
+    $sql    =   "UPDATE category SET publicationStatus=0 WHERE category_id=$category_id";   
+
+    if (mysqli_query($conn, $sql)) {
+        $message    =   "Operation Successfully Occurd";
+        return $message;
+    } else {
+        echo "Error deleting record: " . mysqli_error($conn);
+    }
+}
+function unpublished_a_category($category_id){
+    require '../db_connect.php';
+    $sql    =   "UPDATE category SET publicationStatus=1 WHERE category_id=$category_id";   
+
+    if (mysqli_query($conn, $sql)) {
+        $message    =   "Operation Successfully Occurd";
+        return $message;
+    } else {
+        echo "Error deleting record: " . mysqli_error($conn);
+    }
+}

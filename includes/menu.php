@@ -1,10 +1,46 @@
+<?php
+require 'application.php';
+$categories = select_all_published_category();
+?>
+
 <div class="menu">
     <div class="container">
         <div class="menu_box">
             <ul class="megamenu skyblue">
                 <li class="active grid"><a class="color2" href="index.php">Home</a></li>
-                <li><a class="color4" href="category.php">Category</a></li>				
-                <li><a class="color10" href="#">Men Fashion</a>
+
+                <!--<li><a class="color4" href="category.php">Category</a></li>-->
+                <li><a class="color4" href="category.php">Category</a>
+                    <div class="megapanel">
+                        <div class="row">
+                            <div class="col1">
+                                <div class="h_nav">
+                                    <h4>Categories</h4>
+                                    <ul>
+                                        <?php
+                                        if (mysqli_num_rows($categories) > 0) {
+                                            while ($row = mysqli_fetch_assoc($categories)) {
+                                                ?>
+                                                <li>
+                                                    <a href="men.html">
+                                                        <?php echo $row['category_name']; ?>
+                                                    </a>
+                                                </li>
+                                            <?php
+                                            }
+                                        } else {
+                                            echo "Sorry, No category found in this application";
+                                        }
+                                        ?>
+                                    </ul>	
+                                </div>							
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <li>
+                    <a class="color10" href="#">Men Fashion</a>
                     <div class="megapanel">
                         <div class="row">
                             <div class="col1">
@@ -84,7 +120,9 @@
                         </div>
                     </div>
                 </li>
-                <li><a class="color3" href="404.html">Accessories</a></li>
+
+                <!--<li><a class="color3" href="404.html">Accessories</a></li>-->
+
                 <li><a class="color7" href="#">Women's Fashion</a>
                     <div class="megapanel">
                         <div class="row">

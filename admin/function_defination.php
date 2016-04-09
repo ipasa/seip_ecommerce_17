@@ -179,3 +179,16 @@ function unpublished_a_manufactuter($manufacturer_id){
         echo "Error deleting record: " . mysqli_error($conn);
     }
 }
+function show_product() {
+    require '../db_connect.php';
+    
+    $sql    = "SELECT p.*, c.category_name, m.manufacturer_name FROM tbl_product as p, category as c, tbl_manufacturer as m WHERE p.deletion_status = 1 AND p.category_id = c.category_id AND p.manufacturer_id = m.manufacturer_id";
+    $result = mysqli_query($conn, $sql);
+    return $result;
+}
+function show_view_details($product_data){
+    require '../db_connect.php';
+    $sql    = "SELECT p.*, c.category_name, m.manufacturer_name FROM tbl_product as p, category as c, tbl_manufacturer as m WHERE p.deletion_status = 1 AND p.category_id = c.category_id AND p.manufacturer_id = m.manufacturer_id AND p.product_id = $product_data";
+    $result = mysqli_query($conn, $sql);
+    return $result;
+}

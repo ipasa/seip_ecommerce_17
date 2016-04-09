@@ -129,12 +129,9 @@
                     <div class="limiter visible-desktop">
                         <label>Show</label>
                         <select>
-                            <option value="" selected="selected">
-                                9                </option>
-                            <option value="">
-                                15                </option>
-                            <option value="">
-                                30                </option>
+                            <option value="" selected="selected">9</option>
+                            <option value="">15</option>
+                            <option value="">30</option>
                         </select> per page        
                     </div>
                     <ul class="dc_pagination dc_paginationA dc_paginationA06">

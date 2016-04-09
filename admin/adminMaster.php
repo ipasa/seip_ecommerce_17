@@ -363,9 +363,27 @@ if (isset($_GET['status'])) {
                                     </a>
                                 </li>
                                 
-                                <li><a href="tasks.html"><i class="icon-tasks"></i><span class="hidden-tablet"> Tasks</span></a></li>
-                                <li><a href="ui.html"><i class="icon-eye-open"></i><span class="hidden-tablet"> UI Features</span></a></li>
-                                <li><a href="widgets.html"><i class="icon-dashboard"></i><span class="hidden-tablet"> Widgets</span></a></li>
+                                <li>
+                                    <a href="manufacturer.php">
+                                        <i class="icon-tasks"></i>
+                                        <span class="hidden-tablet"> Add Manufacturer</span>
+                                    </a>
+                                </li>
+                                
+                                <li>
+                                    <a href="display_manufacturer.php">
+                                        <i class="icon-eye-open"></i>
+                                        <span class="hidden-tablet"> Show Manufacturer</span>
+                                    </a>
+                                </li>
+                                
+                                <li>
+                                    <a href="add_product.php">
+                                        <i class="icon-dashboard"></i>
+                                        <span class="hidden-tablet"> Add Product</span>
+                                    </a>
+                                </li>
+                                
                                 <li>
                                     <a class="dropmenu" href="#"><i class="icon-folder-close-alt"></i><span class="hidden-tablet"> Dropdown</span><span class="label label-important"> 3 </span></a>
                                     <ul>
@@ -408,7 +426,14 @@ if (isset($_GET['status'])) {
                                 include 'pages/addCategoryPage.php';
                             } elseif ($pages == 'display_category') {
                                 include 'pages/displayCategoryContent.php';
+                            } elseif ($pages == 'add_manufacturer') {
+                                include 'pages/addManufacturerContent.php';
+                            } elseif ($pages == 'display_manufacturer') {
+                                include 'pages/displayManufacturerContent.php';
+                            } elseif ($pages == 'add_product') {
+                                include 'pages/addProductContent.php';
                             }
+                            
                         } else {
                             include 'pages/maincontent.php';
                         }
